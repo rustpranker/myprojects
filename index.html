@@ -5,212 +5,165 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>MY PROJECTS</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&display=swap');
+
     :root {
       --bg: #000;
-      --panel: #050505;
-      --accent: #0a0a0a;
-      --border: #111;
-      --text: #b5b5b5;
-      --muted: #666;
-      --white: #d9d9d9;
-      --mono: 'Courier New', Courier, monospace;
+      --text: #fff;
+      --gray: #aaa;
+      --border: #222;
+      --font: 'Rajdhani', sans-serif;
     }
 
-    html, body {
-      height: 100%;
+    * {
+      box-sizing: border-box;
       margin: 0;
-      background: radial-gradient(circle at center, #010101 0%, #000 100%);
-      color: var(--text);
-      font-family: var(--mono);
-      overflow: hidden;
-      letter-spacing: 0.5px;
+      padding: 0;
     }
 
-    .wrap {
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
       height: 100vh;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      box-sizing: border-box;
-      padding: 40px;
-    }
-
-    .card {
-      width: 880px;
-      max-width: 95%;
-      height: 88vh;
-      background: var(--panel);
-      border-radius: 6px;
-      box-shadow:
-        inset 0 0 40px rgba(255,255,255,0.02),
-        0 0 60px rgba(0,0,0,0.9);
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      filter: brightness(0.9);
-    }
-
-    /* Tabs */
-    .tabs {
-      background: var(--accent);
-      padding: 18px 12px;
-      display: flex;
       flex-direction: column;
-      gap: 14px;
-      border-right: 1px solid #0f0f0f;
-      box-shadow: inset -10px 0 25px rgba(0,0,0,0.7);
+      align-items: center;
+      justify-content: flex-start;
+      letter-spacing: 1px;
     }
 
-    .tab {
-      background: #0d0d0d;
-      color: var(--white);
-      padding: 12px 14px;
-      border-radius: 4px;
+    /* Верхняя панель */
+    .topbar {
+      width: 100%;
+      background: #0a0a0a;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      padding: 16px 10px;
+      box-shadow: 0 0 25px rgba(255,255,255,0.03);
+    }
+
+    .btn {
+      padding: 10px 18px;
+      color: var(--text);
       text-decoration: none;
-      font-weight: 700;
-      text-align: center;
-      transition: all 0.25s ease;
-      cursor: pointer;
-      border: 1px solid #161616;
-      box-shadow: 0 0 12px rgba(255,255,255,0.02);
-    }
-
-    .tab:hover {
+      border: 1px solid #444;
       background: #111;
-      box-shadow: 0 0 25px rgba(255,255,255,0.05);
-      transform: scale(1.03);
+      transition: 0.3s ease;
+      font-weight: 600;
+      text-transform: uppercase;
+      box-shadow: inset 0 0 10px rgba(255,255,255,0.03);
     }
 
-    .tab:active {
-      transform: scale(0.97);
-      opacity: 0.7;
+    .btn:hover {
+      background: #222;
+      border-color: #777;
+      text-shadow: 0 0 8px #fff;
     }
 
-    /* Main */
+    /* Основной блок */
     .main {
-      padding: 40px;
+      flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
+      padding: 40px;
     }
 
     .photo {
-      width: 240px;
-      height: 240px;
-      border-radius: 6px;
-      background: #0b0b0b;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 220px;
+      height: 220px;
+      border-radius: 6px; /* квадрат с мягкими углами */
       overflow: hidden;
-      border: 1px solid #111;
-      box-shadow:
-        0 0 30px rgba(255,255,255,0.04),
-        inset 0 0 10px rgba(255,255,255,0.03);
+      border: 2px solid #444;
+      box-shadow: 0 0 25px rgba(255,255,255,0.05);
+      transition: 0.4s ease;
+    }
+
+    .photo:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 35px rgba(255,255,255,0.1);
     }
 
     .photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: grayscale(100%) brightness(0.6) contrast(0.9);
+      filter: grayscale(100%) brightness(0.9);
     }
 
-    .title {
-      margin-top: 25px;
+    h1 {
+      font-size: 44px;
+      letter-spacing: 5px;
+      margin-top: 28px;
+      text-shadow: 0 0 10px #fff, 0 0 30px #fff;
     }
 
-    .title h1 {
-      margin: 0;
-      font-size: 38px;
-      color: var(--white);
-      letter-spacing: 3px;
-      text-shadow:
-        0 0 10px rgba(255,255,255,0.05),
-        0 0 25px rgba(255,255,255,0.03);
-      animation: pulseGlow 3s ease-in-out infinite;
-    }
-
-    .title p {
-      margin: 6px 0 0;
-      font-size: 12px;
-      color: var(--muted);
-      opacity: 0.8;
+    p {
+      font-size: 15px;
+      margin-top: 10px;
+      color: var(--gray);
+      text-shadow: 0 0 10px #fff;
     }
 
     .contacts {
-      margin-top: 28px;
-      text-align: center;
+      margin-top: 45px;
+      border-top: 1px solid #333;
+      padding-top: 15px;
     }
 
     .contacts h3 {
-      margin: 0 0 8px 0;
-      color: var(--muted);
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      opacity: 0.7;
+      font-size: 14px;
+      color: var(--gray);
+      margin-bottom: 6px;
     }
 
     .contacts .gray {
-      color: #a1a1a1;
-      font-weight: 600;
-      text-shadow: 0 0 6px rgba(255,255,255,0.05);
-      opacity: 0.85;
+      font-size: 14px;
+      color: #ccc;
+      letter-spacing: 1px;
     }
 
-    /* subtle animation for darkness */
-    @keyframes pulseGlow {
-      0%,100% { text-shadow: 0 0 10px rgba(255,255,255,0.05); opacity: 0.9; }
-      50% { text-shadow: 0 0 20px rgba(255,255,255,0.08); opacity: 1; }
-    }
-
-    @media (max-width:720px) {
-      .card { grid-template-columns: 1fr; }
-      .tabs { flex-direction: row; justify-content: center; padding: 12px; gap: 8px; }
-      .tab { padding: 10px; }
+    @media (max-width: 720px) {
+      .topbar {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="card">
-      <!-- Left tabs -->
-      <div class="tabs">
-        <a class="tab" href="https://pranksip.rf.gd" target="_blank" rel="noopener noreferrer">SIP Телефония</a>
-        <a class="tab" href="https://rustbin.vercel.app" target="_blank" rel="noopener noreferrer">RUSTBIN</a>
-        <a class="tab" href="https://prank.gt.tc" target="_blank" rel="noopener noreferrer">PRANKS</a>
-        <a class="tab" href="https://discord.gg/7putBHKS" target="_blank" rel="noopener noreferrer">Tools</a>
-        <div class="tab" id="clvn">CLVN</div>
-      </div>
+  <div class="topbar">
+    <a href="https://pranksip.rf.gd" class="btn" target="_blank" rel="noopener noreferrer">SIP Телефония</a>
+    <a href="https://rustbin.vercel.app" class="btn" target="_blank" rel="noopener noreferrer">RUSTBIN</a>
+    <a href="https://prank.gt.tc" class="btn" target="_blank" rel="noopener noreferrer">PRANKS</a>
+    <a href="https://discord.gg/7putBHKS" class="btn" target="_blank" rel="noopener noreferrer">TOOLS</a>
+    <div class="btn" id="clvn">CLVN</div>
+  </div>
 
-      <!-- Main -->
-      <div class="main">
-        <div class="photo">
-          <img src="https://i.postimg.cc/bdrbLXcx/image.png" alt="photo">
-        </div>
+  <div class="main">
+    <div class="photo">
+      <img src="https://i.postimg.cc/bdrbLXcx/image.png" alt="photo">
+    </div>
+    <h1 id="title">MY PROJECTS</h1>
+    <p>BY PH CLVN</p>
 
-        <div class="title" id="title">
-          <h1>MY PROJECTS</h1>
-          <p>BY PH CLVN</p>
-        </div>
-
-        <div class="contacts">
-          <h3>contacts:</h3>
-          <div class="gray">mail: jakewantedcrowqk@outlook.com</div>
-          <div class="gray">discord: prankxd</div>
-        </div>
-      </div>
+    <div class="contacts">
+      <h3>CONTACTS</h3>
+      <div class="gray">MAIL: jakewantedcrowqk@outlook.com</div>
+      <div class="gray">DISCORD: prankxd</div>
     </div>
   </div>
 
   <script>
     document.getElementById('clvn').addEventListener('click', () => {
       document.getElementById('title').innerHTML =
-        '<h1 style="color:#d9d9d9;text-shadow:0 0 25px rgba(255,255,255,0.05);animation:pulseGlow 3s ease-in-out infinite;">Soon..</h1>';
+        '<h1 style="text-shadow:0 0 10px #fff,0 0 40px #fff;">SOON..</h1>';
     });
   </script>
 </body>
