@@ -5,56 +5,180 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>MY PROJECTS</title>
   <style>
-    :root{
-      --bg:#0b0b0b;
-      --panel:#0f0f0f;
-      --red:#d92b2b;
-      --blue:#3b82f6;
-      --green:#22c55e;
-      --muted:#9aa0a6;
-      --accent:#1c1c1c;
+    :root {
+      --bg: #000;
+      --panel: #050505;
+      --accent: #0a0a0a;
+      --border: #111;
+      --text: #b5b5b5;
+      --muted: #666;
+      --white: #d9d9d9;
       --mono: 'Courier New', Courier, monospace;
     }
-    html,body{
-      height:100%;
-      margin:0;
-      background:linear-gradient(180deg,#000 0%, #070707 100%);
-      color:#eee;
-      font-family:var(--mono);
-      overflow:hidden;
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: radial-gradient(circle at center, #010101 0%, #000 100%);
+      color: var(--text);
+      font-family: var(--mono);
+      overflow: hidden;
+      letter-spacing: 0.5px;
     }
-    .wrap{height:100vh;display:flex;align-items:center;justify-content:center;padding:40px;box-sizing:border-box}
-    .card{width:900px;max-width:95%;height:90vh;background:var(--panel);border-radius:8px;box-shadow:0 8px 30px rgba(0,0,0,.7);display:grid;grid-template-columns:220px 1fr;overflow:hidden}
 
-    /* left tabs */
-    .tabs{background:var(--accent);padding:18px 12px;display:flex;flex-direction:column;gap:14px}
-    .tab{background:var(--red);color:#fff;padding:12px 14px;border-radius:6px;text-decoration:none;font-weight:700;display:inline-block;box-shadow:0 4px 0 rgba(0,0,0,.25);text-align:center;cursor:pointer;}
-    .tab:active{transform:translateY(2px);box-shadow:none}
+    .wrap {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      padding: 40px;
+    }
 
-    /* main */
-    .main{padding:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-    .photo{width:260px;height:260px;border-radius:6px;background:#121212;display:flex;align-items:center;justify-content:center;overflow:hidden;border:4px solid rgba(255,255,255,0.03);}
-    .photo img{width:100%;height:100%;object-fit:cover;display:block}
-    .title{margin-top:20px}
-    .title h1{margin:0;font-size:36px;color:var(--red);letter-spacing:2px}
-    .title p{margin:6px 0 0;font-size:12px;color:var(--blue)}
+    .card {
+      width: 880px;
+      max-width: 95%;
+      height: 88vh;
+      background: var(--panel);
+      border-radius: 6px;
+      box-shadow:
+        inset 0 0 40px rgba(255,255,255,0.02),
+        0 0 60px rgba(0,0,0,0.9);
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      filter: brightness(0.9);
+    }
 
-    .contacts{margin-top:26px;text-align:center}
-    .contacts h3{margin:0 0 8px 0;color:var(--muted);font-size:13px}
-    .contacts .green{color:var(--green);font-weight:700}
+    /* Tabs */
+    .tabs {
+      background: var(--accent);
+      padding: 18px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      border-right: 1px solid #0f0f0f;
+      box-shadow: inset -10px 0 25px rgba(0,0,0,0.7);
+    }
 
-    /* responsive */
-    @media (max-width:720px){
-      .card{grid-template-columns:1fr;}
-      .tabs{flex-direction:row;justify-content:center;padding:12px;gap:8px}
-      .tab{padding:10px}
+    .tab {
+      background: #0d0d0d;
+      color: var(--white);
+      padding: 12px 14px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 700;
+      text-align: center;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      border: 1px solid #161616;
+      box-shadow: 0 0 12px rgba(255,255,255,0.02);
+    }
+
+    .tab:hover {
+      background: #111;
+      box-shadow: 0 0 25px rgba(255,255,255,0.05);
+      transform: scale(1.03);
+    }
+
+    .tab:active {
+      transform: scale(0.97);
+      opacity: 0.7;
+    }
+
+    /* Main */
+    .main {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .photo {
+      width: 240px;
+      height: 240px;
+      border-radius: 6px;
+      background: #0b0b0b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid #111;
+      box-shadow:
+        0 0 30px rgba(255,255,255,0.04),
+        inset 0 0 10px rgba(255,255,255,0.03);
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%) brightness(0.6) contrast(0.9);
+    }
+
+    .title {
+      margin-top: 25px;
+    }
+
+    .title h1 {
+      margin: 0;
+      font-size: 38px;
+      color: var(--white);
+      letter-spacing: 3px;
+      text-shadow:
+        0 0 10px rgba(255,255,255,0.05),
+        0 0 25px rgba(255,255,255,0.03);
+      animation: pulseGlow 3s ease-in-out infinite;
+    }
+
+    .title p {
+      margin: 6px 0 0;
+      font-size: 12px;
+      color: var(--muted);
+      opacity: 0.8;
+    }
+
+    .contacts {
+      margin-top: 28px;
+      text-align: center;
+    }
+
+    .contacts h3 {
+      margin: 0 0 8px 0;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.7;
+    }
+
+    .contacts .gray {
+      color: #a1a1a1;
+      font-weight: 600;
+      text-shadow: 0 0 6px rgba(255,255,255,0.05);
+      opacity: 0.85;
+    }
+
+    /* subtle animation for darkness */
+    @keyframes pulseGlow {
+      0%,100% { text-shadow: 0 0 10px rgba(255,255,255,0.05); opacity: 0.9; }
+      50% { text-shadow: 0 0 20px rgba(255,255,255,0.08); opacity: 1; }
+    }
+
+    @media (max-width:720px) {
+      .card { grid-template-columns: 1fr; }
+      .tabs { flex-direction: row; justify-content: center; padding: 12px; gap: 8px; }
+      .tab { padding: 10px; }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
     <div class="card">
-      <!-- Left red tabs -->
+      <!-- Left tabs -->
       <div class="tabs">
         <a class="tab" href="https://pranksip.rf.gd" target="_blank" rel="noopener noreferrer">SIP Телефония</a>
         <a class="tab" href="https://rustbin.vercel.app" target="_blank" rel="noopener noreferrer">RUSTBIN</a>
@@ -63,7 +187,7 @@
         <div class="tab" id="clvn">CLVN</div>
       </div>
 
-      <!-- Main center area -->
+      <!-- Main -->
       <div class="main">
         <div class="photo">
           <img src="https://i.postimg.cc/bdrbLXcx/image.png" alt="photo">
@@ -76,15 +200,17 @@
 
         <div class="contacts">
           <h3>contacts:</h3>
-          <div class="green">mail: jakewantedcrowqk@outlook.com</div>
-          <div class="green">discord: prankxd</div>
+          <div class="gray">mail: jakewantedcrowqk@outlook.com</div>
+          <div class="gray">discord: prankxd</div>
         </div>
       </div>
     </div>
   </div>
+
   <script>
-    document.getElementById('clvn').addEventListener('click', ()=>{
-      document.getElementById('title').innerHTML = '<h1 style="color: var(--red);">Soon..</h1>';
+    document.getElementById('clvn').addEventListener('click', () => {
+      document.getElementById('title').innerHTML =
+        '<h1 style="color:#d9d9d9;text-shadow:0 0 25px rgba(255,255,255,0.05);animation:pulseGlow 3s ease-in-out infinite;">Soon..</h1>';
     });
   </script>
 </body>
